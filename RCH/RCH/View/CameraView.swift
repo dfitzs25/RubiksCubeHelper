@@ -37,9 +37,9 @@ struct CameraView: View {
                         Image(uiImage: image)
                         .resizable()
                         .scaledToFit()
-                        .frame(maxWidth: 350, maxHeight: 500)
+//                        .frame(maxWidth: 350, maxHeight: 500)
 //                        .padding(.horizontal)
-                        GridView()
+                        GridView(image: image)
                             .environmentObject(GridVitals())
                             .environmentObject(PhotoCaptureView())
                     }
@@ -47,24 +47,18 @@ struct CameraView: View {
                         Button {
                             pcv.source = .camera
                             pcv.showPhotoPicker()
+                            resetColorSystem()
                         } label: {
                             Text("Retake")
                         }
                         Button {
                             pcv.source = .library
                             pcv.showPhotoPicker()
+                            resetColorSystem()
                         } label: {
                             Text("Library")
                         }
-                        Button {
-                            let pc = PixelCalculator()
-                            setPicValues(width: CGFloat(image.pixelWidth), height: CGFloat(image.pixelHeight))
-                            findPixelColor(image: image, x: pc.findXValue(posChange: true, mag: gv.magnificiation, offset: gv.offset), y: pc.findYValue(posChange: true, mag: gv.magnificiation, offset: gv.offset))
-                        } label: {
-                            Text("Process")
-                        }
-                        
-                    }.padding(.top, 6.0)
+                    }
                     Spacer()
                 } else {
                     ZStack{
@@ -100,7 +94,7 @@ struct CameraView: View {
                 ImagePicker(sourceType: pcv.source == .library ? .photoLibrary : .camera, selectedImage: $pcv.image)
                     .ignoresSafeArea()
             }
-            .navigationTitle("My Images")
+            .navigationTitle("Rubik's Cube Solver")
         }
     }
 }

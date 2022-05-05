@@ -19,7 +19,7 @@ public extension UIImage {
         return cgImage?.height ?? 0
     }
 
-    func pixelColor(x: Int, y: Int) -> KeyValuePairs<String, UIColor> {
+    func pixelColor(x: Int, y: Int) -> UIColor {
         assert(
             0..<pixelWidth ~= x && 0..<pixelHeight ~= y,
             "Pixel coordinates are out of bounds")
@@ -32,8 +32,8 @@ public extension UIImage {
             let componentLayout = cgImage.bitmapInfo.componentLayout
         else {
             assertionFailure("Could not get a pixel of an image")
-            return ["nil":.clear]
-//            return .clear
+//            return ["nil":.clear]
+            return .clear
             
         }
 
@@ -60,7 +60,6 @@ public extension UIImage {
             var red: UInt8 = 0
             var green: UInt8 = 0
             var blue: UInt8 = 0
-            var type: String = ""
 
             switch componentLayout {
             case .bgra:
@@ -68,28 +67,24 @@ public extension UIImage {
                 red = components.2
                 green = components.1
                 blue = components.0
-                type = "bgra"
             case .abgr:
                 alpha = components.0
                 red = components.3
                 green = components.2
                 blue = components.1
-                type = "abgr"
             case .argb:
                 alpha = components.0
                 red = components.1
                 green = components.2
                 blue = components.3
-                type = "argb"
             case .rgba:
                 alpha = components.3
                 red = components.0
                 green = components.1
                 blue = components.2
-                type = "rgba"
             default:
-                return ["nil":.clear]
-//                return .clear
+//                return ["nil":.clear]
+                return .clear
             }
 
             // If chroma components are premultiplied by alpha and the alpha is `0`,
@@ -101,8 +96,8 @@ public extension UIImage {
                 blue = UInt8((CGFloat(blue)*invUnitAlpha).rounded())
             }
 
-            return [type:.init(red: red, green: green, blue: blue, alpha: alpha)]
-//            return .init(red: red, green: green, blue: blue, alpha: alpha)
+//            return [type:.init(red: red, green: green, blue: blue, alpha: alpha)]
+            return .init(red: red, green: green, blue: blue, alpha: alpha)
 
         } else if componentLayout.count == 3 {
             let components = (
@@ -114,31 +109,28 @@ public extension UIImage {
             var red: UInt8 = 0
             var green: UInt8 = 0
             var blue: UInt8 = 0
-            var type: String = ""
 
             switch componentLayout {
             case .bgr:
                 red = components.2
                 green = components.1
                 blue = components.0
-                type = "bgr"
             case .rgb:
                 red = components.0
                 green = components.1
                 blue = components.2
-                type = "rgb"
             default:
-                return ["nil":.clear]
-//                return .clear
+//                return ["nil":.clear]
+                return .clear
             }
 
-            return [type:.init(red: red, green: green, blue: blue, alpha: UInt8(255))]
-//            return .init(red: red, green: green, blue: blue, alpha: UInt8(255))
+//            return [type:.init(red: red, green: green, blue: blue, alpha: UInt8(255))]
+            return .init(red: red, green: green, blue: blue, alpha: UInt8(255))
 
         } else {
             assertionFailure("Unsupported number of pixel components")
-            return ["nil":.clear]
-//            return .clear
+//            return ["nil":.clear]
+            return .clear
         }
     }
 
