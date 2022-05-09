@@ -8,6 +8,8 @@
 import SwiftUI
 import PureSwiftUI
 
+
+
 struct ContentView: View {
     var body: some View {
         ZStack {
@@ -24,9 +26,11 @@ struct ContentView: View {
         }
     }
 }
-
+//["W","O","R","O","W","R","W","W","O"]
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Circle()
+//        SideColorEditor(side: getCubeSideArrayTest(side: 1))
+//        CubeSide(side: getCubeSideArrayTest(side: 1), width: 200, height: 200)
     }
 }

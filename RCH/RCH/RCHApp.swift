@@ -11,7 +11,7 @@ import SwiftUI
 struct RCHApp: App {
     var body: some Scene {
         WindowGroup {
-            CameraView()
+            SolvingView()
                 .environmentObject(PhotoCaptureView())
                 .environmentObject(GridVitals())
         }

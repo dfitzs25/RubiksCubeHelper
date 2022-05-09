@@ -13,10 +13,9 @@
 		6816B0982820AF350057D936 /* RCHTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6816B0972820AF350057D936 /* RCHTests.swift */; };
 		6816B0A22820AF350057D936 /* RCHUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6816B0A12820AF350057D936 /* RCHUITests.swift */; };
 		6816B0A42820AF350057D936 /* RCHUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6816B0A32820AF350057D936 /* RCHUITestsLaunchTests.swift */; };
-		6816B0B62820B3160057D936 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6816B0B52820B3160057D936 /* CameraView.swift */; };
+		6816B0B62820B3160057D936 /* SolvingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6816B0B52820B3160057D936 /* SolvingView.swift */; };
 		6816B0B92820B65A0057D936 /* PureSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6816B0B82820B65A0057D936 /* PureSwiftUI */; };
 		6816B0BB2820C2340057D936 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6816B0BA2820C2340057D936 /* ImagePicker.swift */; };
-		6816B0BD2820C3940057D936 /* ImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6816B0BC2820C3940057D936 /* ImagePickerController.swift */; };
 		6816B0BF2820C5A50057D936 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6816B0BE2820C5A50057D936 /* ContentView.swift */; };
 		6816B0C12820C6720057D936 /* PhotoCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6816B0C02820C6720057D936 /* PhotoCaptureView.swift */; };
 		6816B0C5282243DE0057D936 /* Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6816B0C4282243DE0057D936 /* Picker.swift */; };
@@ -26,6 +25,10 @@
 		68825EDE2823617400EF553A /* PictureGridMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68825EDD2823617400EF553A /* PictureGridMath.swift */; };
 		68825EE02824415500EF553A /* ColorProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68825EDF2824415500EF553A /* ColorProcessing.swift */; };
 		68825EE2282451E800EF553A /* RubiksCubeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68825EE1282451E800EF553A /* RubiksCubeModel.swift */; };
+		68825EE42824589400EF553A /* RubiksCubeGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68825EE32824589400EF553A /* RubiksCubeGrid.swift */; };
+		68B32D9D282629AB0094448D /* RandomShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B32D9C282629AB0094448D /* RandomShapes.swift */; };
+		68B32D9F28262A4C0094448D /* ColorFixing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B32D9E28262A4C0094448D /* ColorFixing.swift */; };
+		68C08B262828920C004BFA44 /* RubiksCubeSolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C08B252828920C004BFA44 /* RubiksCubeSolution.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,9 +58,8 @@
 		6816B09D2820AF350057D936 /* RCHUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RCHUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6816B0A12820AF350057D936 /* RCHUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCHUITests.swift; sourceTree = "<group>"; };
 		6816B0A32820AF350057D936 /* RCHUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCHUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		6816B0B52820B3160057D936 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		6816B0B52820B3160057D936 /* SolvingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolvingView.swift; sourceTree = "<group>"; };
 		6816B0BA2820C2340057D936 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		6816B0BC2820C3940057D936 /* ImagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerController.swift; sourceTree = "<group>"; };
 		6816B0BE2820C5A50057D936 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6816B0C02820C6720057D936 /* PhotoCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureView.swift; sourceTree = "<group>"; };
 		6816B0C4282243DE0057D936 /* Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker.swift; sourceTree = "<group>"; };
@@ -67,6 +69,10 @@
 		68825EDD2823617400EF553A /* PictureGridMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureGridMath.swift; sourceTree = "<group>"; };
 		68825EDF2824415500EF553A /* ColorProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorProcessing.swift; sourceTree = "<group>"; };
 		68825EE1282451E800EF553A /* RubiksCubeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RubiksCubeModel.swift; sourceTree = "<group>"; };
+		68825EE32824589400EF553A /* RubiksCubeGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RubiksCubeGrid.swift; sourceTree = "<group>"; };
+		68B32D9C282629AB0094448D /* RandomShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomShapes.swift; sourceTree = "<group>"; };
+		68B32D9E28262A4C0094448D /* ColorFixing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFixing.swift; sourceTree = "<group>"; };
+		68C08B252828920C004BFA44 /* RubiksCubeSolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RubiksCubeSolution.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +162,7 @@
 		6816B0B02820B1B80057D936 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				6816B0B52820B3160057D936 /* CameraView.swift */,
+				6816B0B52820B3160057D936 /* SolvingView.swift */,
 				6816B0BE2820C5A50057D936 /* ContentView.swift */,
 				6816B0C02820C6720057D936 /* PhotoCaptureView.swift */,
 			);
@@ -173,6 +179,10 @@
 				68825EDD2823617400EF553A /* PictureGridMath.swift */,
 				68825EDF2824415500EF553A /* ColorProcessing.swift */,
 				68825EE1282451E800EF553A /* RubiksCubeModel.swift */,
+				68825EE32824589400EF553A /* RubiksCubeGrid.swift */,
+				68B32D9C282629AB0094448D /* RandomShapes.swift */,
+				68B32D9E28262A4C0094448D /* ColorFixing.swift */,
+				68C08B252828920C004BFA44 /* RubiksCubeSolution.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -180,7 +190,6 @@
 		6816B0B22820B1D10057D936 /* Control */ = {
 			isa = PBXGroup;
 			children = (
-				6816B0BC2820C3940057D936 /* ImagePickerController.swift */,
 				6816B0BA2820C2340057D936 /* ImagePicker.swift */,
 			);
 			path = Control;
@@ -324,17 +333,20 @@
 			files = (
 				68825EDE2823617400EF553A /* PictureGridMath.swift in Sources */,
 				6816B0BB2820C2340057D936 /* ImagePicker.swift in Sources */,
+				68B32D9D282629AB0094448D /* RandomShapes.swift in Sources */,
+				68825EE42824589400EF553A /* RubiksCubeGrid.swift in Sources */,
 				6816B0BF2820C5A50057D936 /* ContentView.swift in Sources */,
 				6816B0C5282243DE0057D936 /* Picker.swift in Sources */,
 				68825EE02824415500EF553A /* ColorProcessing.swift in Sources */,
 				68825EE2282451E800EF553A /* RubiksCubeModel.swift in Sources */,
-				6816B0B62820B3160057D936 /* CameraView.swift in Sources */,
+				68B32D9F28262A4C0094448D /* ColorFixing.swift in Sources */,
+				6816B0B62820B3160057D936 /* SolvingView.swift in Sources */,
 				6816B0872820AF330057D936 /* RCHApp.swift in Sources */,
 				6816B0CB2823221B0057D936 /* PixelColorReader.swift in Sources */,
 				6816B0C92822FFF20057D936 /* RCColorSystem.swift in Sources */,
 				6816B0C12820C6720057D936 /* PhotoCaptureView.swift in Sources */,
 				6816B0C7282248250057D936 /* ZoomableScrollView.swift in Sources */,
-				6816B0BD2820C3940057D936 /* ImagePickerController.swift in Sources */,
+				68C08B262828920C004BFA44 /* RubiksCubeSolution.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

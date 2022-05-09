@@ -7,104 +7,12 @@
 
 import Foundation
 import SwiftUI
-import PureSwiftUI
-
-private let gridLayout = LayoutGuideConfig.grid(columns: 3, rows: 3)
-
-private typealias Curve = (p: CGPoint, cp1: CGPoint, cp2: CGPoint)
 
 private var processed = false
-
-private func curveMaker(point: CGPoint) -> Curve {
-    return Curve(point,point,point)
-}
-
-struct RubkisGrid: Shape {
-
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        
-        let g = gridLayout.layout(in: rect)
-        
-        //maiking the points for the actual shapes
-        
-        //top left corner
-        let c11 = g[0,0]
-        let c12 = g[0,1]
-        let c13 = g[1,0]
-        let c14 = g[1,1]
-        //c13 and c14 relate to top edge
-        //c14 and c12 relate to middle left edge
-        //top right corner
-        let c21 = g[3,0]
-        let c22 = g[3,1]
-        let c23 = g[2,0]
-        let c24 = g[2,1]
-        //c23 and c24 relate to top edge
-        //c24 and c22 relate to middle right edge
-        //bottome left corner
-        let c31 = g[0,2]
-        let c32 = g[1,2]
-        let c33 = g[0,3]
-        let c34 = g[1,3]
-        //c31 and c32 relate to middle left edge
-        //c34 and c33 relate to bottom edge
-        //bottom right corner
-        let c41 = g[3,2]
-        let c42 = g[3,3]
-        let c43 = g[2,2]
-        let c44 = g[2,3]
-        //c44 and c43 relate to bottom edge
-        //c41 and c43 rleate to middle right edge
-        
-        var curves = [Curve]()
-        
-        //add all points in order to the curves list
-        curves.append(curveMaker(point: c12))
-        curves.append(curveMaker(point: c14))
-        curves.append(curveMaker(point: c13))
-        curves.append(curveMaker(point: c11))
-        //corner 2
-        curves.append(curveMaker(point: c21))
-        curves.append(curveMaker(point: c22))
-        curves.append(curveMaker(point: c24))
-        curves.append(curveMaker(point: c23))
-        curves.append(curveMaker(point: c21))
-        //corner 3
-        curves.append(curveMaker(point: c41))
-        curves.append(curveMaker(point: c42))
-        curves.append(curveMaker(point: c44))
-        curves.append(curveMaker(point: c43))
-        curves.append(curveMaker(point: c44))
-        //corner 4
-        curves.append(curveMaker(point: c34))
-        curves.append(curveMaker(point: c33))
-        curves.append(curveMaker(point: c31))
-        curves.append(curveMaker(point: c32))
-        curves.append(curveMaker(point: c34))
-        curves.append(curveMaker(point: c32))
-        curves.append(curveMaker(point: c31))
-        //fill in last lines
-        curves.append(curveMaker(point: c12))
-        curves.append(curveMaker(point: c14))
-        curves.append(curveMaker(point: c32))
-        curves.append(curveMaker(point: c41))
-        curves.append(curveMaker(point: c43))
-        curves.append(curveMaker(point: c24))
-        curves.append(curveMaker(point: c14))
-        //go through the list and draw them
-        path.move(to: c11)
-        
-        for curve in curves {
-            path.curve(curve.p, cp1: curve.cp1, cp2: curve.cp2)
-        }
-        
-        return path
-    }
-}
-
-var widthSet = false
-var heightSet = false
+private var widthSet = false
+private var heightSet = false
+private var side: Int = 0
+private var colors = ["E","E","E","E","E","E","E","E","E"]
 ///Responsible for helping the user line up their peices on the grid
 ///as well as show the colors beign read by the system
 struct CornerPiece: View {
@@ -124,18 +32,7 @@ struct CornerPiece: View {
             setGridWidth(width: width)
             widthSet = true
         }
-        let magFrame = (frame * mag)
-        let change = magFrame / 3
-        let xOffset = offset.x * mag
-        var final = 0.0
-        
-        if xBool {
-            final = (width/2) + change + xOffset
-        } else {
-            final = (width/2) - change + xOffset
-        }
-        
-        return final
+        return cornerXPosition(frame: frame, mag: mag, offset: offset, xBool: xBool)
     }
     
     func setHeight(geo: GeometryProxy) -> CGFloat {
@@ -144,19 +41,7 @@ struct CornerPiece: View {
             setGridHeight(height: height)
             heightSet = true
         }
-        let magFrame = (frame * mag)
-        let change = magFrame / 3
-        let yOffset = offset.y * mag
-        var final = 0.0
-        
-        if yBool {
-            final = (height/2) + change + yOffset
-        } else {
-            final = (height/2) - change + yOffset
-        }
-        
-        return final
-//        return pc.findYValue(posChange: false)
+        return cornerYPosition(frame: frame, mag: mag, offset: offset, yBool: yBool)
     }
     
     func getColor(geo: GeometryProxy) -> Color {
@@ -166,10 +51,12 @@ struct CornerPiece: View {
 
             let uiColor = findPixelColor(image: image, x: x, y: y)
 
-            let color = Color.init(uiColor: uiColor)
             let colorString = idColor(color: uiColor)
-            print("GOT THE COLOR - Corner:",colorString)
-            return color
+            //map color to the rubik's cube model
+            let pos = getCornerIntPosition(xBool: xBool, yBool: yBool)
+//            print("Corner:",colorString,"Position:",pos, "Side:", side)
+            mapColorToSide(side: side, color: colorString, pos: pos)
+            return Color.init(uiColor: uiColor)
         } else {
             return .gray
         }
@@ -198,50 +85,18 @@ struct EdgePiece: View {
     var image: UIImage
     let frame = 220.0
     
-    func setWidth() -> CGFloat{
-        let magFrame = (frame * mag)
-        let change = magFrame / 3
-        let xOffset = offset.x * mag
-        var final = 0.0
-        
-        if xBool && !xSame {
-            final = (gridWidth/2) + change + xOffset
-        } else if !xSame {
-            final = (gridWidth/2) - change + xOffset
-        } else {
-            final = (gridWidth/2) + xOffset
-        }
-        
-        return final
-    }
-    
-    func setHeight() -> CGFloat {
-        let magFrame = (frame * mag)
-        let change = magFrame / 3
-        let yOffset = offset.y * mag
-        var final = 0.0
-        
-        if yBool && xSame{
-            final = (gridHeight/2) + change + yOffset
-        } else if xSame{
-            final = (gridHeight/2) - change + yOffset
-        } else {
-            final = (gridHeight/2) + yOffset
-        }
-        
-        return final
-    }
-    
     func getColor() -> Color {
         if processed{
-            let y = setHeight()
-            let x = setWidth()
+            let y = edgeYPosition(frame: frame, mag: mag, offset: offset, yBool: yBool, xSame: xSame)
+            let x = edgeXPosition(frame: frame, mag: mag, offset: offset, xBool: xBool, xSame: xSame)
 
             let uiColor = findPixelColor(image: image, x: x, y: y)
 
             let color = Color.init(uiColor: uiColor)
             let colorString = idColor(color: uiColor)
-            print("GOT THE COLOR - Corner:",colorString)
+            //mapping color to rubik's cube model
+            let pos = getEdgeIntPosition(xBool: xBool, yBool: yBool, xSame: xSame)
+            mapColorToSide(side: side, color: colorString, pos: pos)
             return color
         } else {
             return .gray
@@ -253,23 +108,31 @@ struct EdgePiece: View {
             Circle()
                 .fill(getColor())
                 .frame(20)
-                .position(x: setWidth(), y: setHeight())
+                .position(x: edgeXPosition(frame: frame, mag: mag, offset: offset, xBool: xBool, xSame: xSame), y: edgeYPosition(frame: frame, mag: mag, offset: offset, yBool: yBool, xSame: xSame))
         }
     }
 }
 
+
+
 func resetColorSystem() {
     processed = false
+}
+
+func setSide(current: Int) {
+    side = current
 }
 
 struct GridView: View {
     
     @EnvironmentObject var gv: GridVitals
     var image: UIImage
+    @Binding var side: Int
+    @Binding var gridText: String 
     
     var body: some View {
         VStack{
-            Text("Take a Picture of the WHITE SIDE.")
+            Text(gridText)
             ZStack {
                 RubkisGrid()
                     .stroke(Color.black, lineWidth: 4)
@@ -309,11 +172,18 @@ struct GridView: View {
             }
             Button {
                 processed = true
+                setSide(current: side)
                 gv.WiggleDots()
                 setPicValues(width: CGFloat(image.size.width), height: CGFloat(image.size.height))
             } label: {
                 Text("Process")
             }
+//            Button {
+//
+//                print(formatCubeSide(side: side))
+//            } label: {
+//                Text("TEST FORMATING")
+//            }
         }
     }
 }

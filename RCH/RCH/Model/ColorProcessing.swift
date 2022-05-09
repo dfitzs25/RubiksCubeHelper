@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 func idColor(color: UIColor) -> String {
     var red: CGFloat = 0
@@ -31,12 +32,12 @@ func idColor(color: UIColor) -> String {
     } else if (whiteColor(red: red, blue: blue, green: green)) {
         return "W"
     }
-    return "UNKOWN"
+    return "H"
 }
 
 func whiteColor(red: CGFloat, blue: CGFloat, green: CGFloat) -> Bool{
     
-    if red > 150 && blue > 150 && green > 150{
+    if red > 130 && blue > 130 && green > 130{
         return true
     }
     
@@ -84,10 +85,31 @@ func orangeColor(red: CGFloat, blue: CGFloat, green: CGFloat) -> Bool {
 }
 
 func redOrangeDecider(red: CGFloat, blue: CGFloat, green: CGFloat) -> String {
-    let combo = blue + green
-    if combo / red >= 0.5 {
+//    let combo = blue + green
+    let combo = blue + blue/2
+//    print(red,green,blue," <- RGB VALUES")
+    if green > 90 && green > combo{
         return "O"
     }
     
     return "R"
+}
+
+func squareColor(color: String) -> Color {
+    switch color{
+    case "G":
+        return Color.green
+    case "B":
+        return Color.blue
+    case "Y":
+        return Color.cgYellow
+    case "W":
+        return Color.white
+    case "R":
+        return Color.red
+    case "O":
+        return Color.orange
+    default:
+        return Color.secondary
+    }
 }
