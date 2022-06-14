@@ -28,7 +28,12 @@
 		68825EE42824589400EF553A /* RubiksCubeGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68825EE32824589400EF553A /* RubiksCubeGrid.swift */; };
 		68B32D9D282629AB0094448D /* RandomShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B32D9C282629AB0094448D /* RandomShapes.swift */; };
 		68B32D9F28262A4C0094448D /* ColorFixing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B32D9E28262A4C0094448D /* ColorFixing.swift */; };
-		68C08B262828920C004BFA44 /* RubiksCubeSolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C08B252828920C004BFA44 /* RubiksCubeSolution.swift */; };
+		68C08B262828920C004BFA44 /* CubeSolvingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C08B252828920C004BFA44 /* CubeSolvingModel.swift */; };
+		68C08B2928299E03004BFA44 /* TestViewForSolveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C08B2828299E03004BFA44 /* TestViewForSolveModel.swift */; };
+		68C08B2C2829FFB1004BFA44 /* BegSolveCross.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C08B2B2829FFB1004BFA44 /* BegSolveCross.swift */; };
+		68C08B2E282AD9E9004BFA44 /* PairAssociation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C08B2D282AD9E9004BFA44 /* PairAssociation.swift */; };
+		68C08B30282C5D86004BFA44 /* BegCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C08B2F282C5D86004BFA44 /* BegCorners.swift */; };
+		68C08B34282F4CE3004BFA44 /* BegSideEdges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C08B33282F4CE3004BFA44 /* BegSideEdges.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +77,12 @@
 		68825EE32824589400EF553A /* RubiksCubeGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RubiksCubeGrid.swift; sourceTree = "<group>"; };
 		68B32D9C282629AB0094448D /* RandomShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomShapes.swift; sourceTree = "<group>"; };
 		68B32D9E28262A4C0094448D /* ColorFixing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFixing.swift; sourceTree = "<group>"; };
-		68C08B252828920C004BFA44 /* RubiksCubeSolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RubiksCubeSolution.swift; sourceTree = "<group>"; };
+		68C08B252828920C004BFA44 /* CubeSolvingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeSolvingModel.swift; sourceTree = "<group>"; };
+		68C08B2828299E03004BFA44 /* TestViewForSolveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewForSolveModel.swift; sourceTree = "<group>"; };
+		68C08B2B2829FFB1004BFA44 /* BegSolveCross.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BegSolveCross.swift; sourceTree = "<group>"; };
+		68C08B2D282AD9E9004BFA44 /* PairAssociation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairAssociation.swift; sourceTree = "<group>"; };
+		68C08B2F282C5D86004BFA44 /* BegCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BegCorners.swift; sourceTree = "<group>"; };
+		68C08B33282F4CE3004BFA44 /* BegSideEdges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BegSideEdges.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +182,7 @@
 		6816B0B12820B1C60057D936 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				68C08B272828ACFD004BFA44 /* FindingSolutions */,
 				6816B0C4282243DE0057D936 /* Picker.swift */,
 				6816B0C6282248250057D936 /* ZoomableScrollView.swift */,
 				6816B0C82822FFF20057D936 /* RCColorSystem.swift */,
@@ -182,7 +193,6 @@
 				68825EE32824589400EF553A /* RubiksCubeGrid.swift */,
 				68B32D9C282629AB0094448D /* RandomShapes.swift */,
 				68B32D9E28262A4C0094448D /* ColorFixing.swift */,
-				68C08B252828920C004BFA44 /* RubiksCubeSolution.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -193,6 +203,27 @@
 				6816B0BA2820C2340057D936 /* ImagePicker.swift */,
 			);
 			path = Control;
+			sourceTree = "<group>";
+		};
+		68C08B272828ACFD004BFA44 /* FindingSolutions */ = {
+			isa = PBXGroup;
+			children = (
+				68C08B2A2829FF70004BFA44 /* BeginerMethod */,
+				68C08B252828920C004BFA44 /* CubeSolvingModel.swift */,
+				68C08B2828299E03004BFA44 /* TestViewForSolveModel.swift */,
+				68C08B2D282AD9E9004BFA44 /* PairAssociation.swift */,
+			);
+			path = FindingSolutions;
+			sourceTree = "<group>";
+		};
+		68C08B2A2829FF70004BFA44 /* BeginerMethod */ = {
+			isa = PBXGroup;
+			children = (
+				68C08B2B2829FFB1004BFA44 /* BegSolveCross.swift */,
+				68C08B2F282C5D86004BFA44 /* BegCorners.swift */,
+				68C08B33282F4CE3004BFA44 /* BegSideEdges.swift */,
+			);
+			path = BeginerMethod;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,18 +366,23 @@
 				6816B0BB2820C2340057D936 /* ImagePicker.swift in Sources */,
 				68B32D9D282629AB0094448D /* RandomShapes.swift in Sources */,
 				68825EE42824589400EF553A /* RubiksCubeGrid.swift in Sources */,
+				68C08B30282C5D86004BFA44 /* BegCorners.swift in Sources */,
 				6816B0BF2820C5A50057D936 /* ContentView.swift in Sources */,
 				6816B0C5282243DE0057D936 /* Picker.swift in Sources */,
 				68825EE02824415500EF553A /* ColorProcessing.swift in Sources */,
 				68825EE2282451E800EF553A /* RubiksCubeModel.swift in Sources */,
 				68B32D9F28262A4C0094448D /* ColorFixing.swift in Sources */,
 				6816B0B62820B3160057D936 /* SolvingView.swift in Sources */,
+				68C08B2E282AD9E9004BFA44 /* PairAssociation.swift in Sources */,
 				6816B0872820AF330057D936 /* RCHApp.swift in Sources */,
 				6816B0CB2823221B0057D936 /* PixelColorReader.swift in Sources */,
 				6816B0C92822FFF20057D936 /* RCColorSystem.swift in Sources */,
 				6816B0C12820C6720057D936 /* PhotoCaptureView.swift in Sources */,
 				6816B0C7282248250057D936 /* ZoomableScrollView.swift in Sources */,
-				68C08B262828920C004BFA44 /* RubiksCubeSolution.swift in Sources */,
+				68C08B2C2829FFB1004BFA44 /* BegSolveCross.swift in Sources */,
+				68C08B2928299E03004BFA44 /* TestViewForSolveModel.swift in Sources */,
+				68C08B262828920C004BFA44 /* CubeSolvingModel.swift in Sources */,
+				68C08B34282F4CE3004BFA44 /* BegSideEdges.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

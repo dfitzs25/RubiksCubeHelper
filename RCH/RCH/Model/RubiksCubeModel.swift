@@ -23,13 +23,27 @@ private var redSide = ["E","E","E","E","R","E","E","E","E"]
 private var blueSide = ["E","E","E","E","B","E","E","E","E"]
 private var whiteSide = ["E","E","E","E","W","E","E","E","E"]
 private var yellowSide = ["E","E","E","E","Y","E","E","E","E"]
+//
+//private var orageTest = ["W","O","R","O","O","Y","G","R","W"]
+//private var greenTest = ["W","R","G","O","G","W","B","R","R"]
+//private var redTest = ["O","O","O","B","R","R","Y","G","R"]
+//private var blueTest = ["B","B","O","Y","B","W","B","Y","W"]
+//private var whiteTest = ["B","Y","Y","B","W","G","G","W","Y"]
+//private var yellowTest = ["R","B","G","G","Y","W","O","G","Y"]
+//
+private var orageTest = ["O","O","O","O","O","O","O","O","O"]
+private var greenTest = ["G","G","G","G","G","G","G","G","G"]
+private var redTest = ["R","R","R","R","R","R","R","R","R"]
+private var blueTest = ["B","B","B","B","B","B","B","B","B"]
+private var whiteTest = ["W","W","W","W","W","W","W","W","W"]
+private var yellowTest = ["Y","Y","Y","Y","Y","Y","Y","Y","Y"]
 
-private var orageTest = ["O","G","G","O","O","Y","B","G","R"]
-private var greenTest = ["R","B","G","R","G","Y","W","B","R"]
-private var redTest = ["W","B","Y","G","R","O","Y","R","Y"]
-private var blueTest = ["B","H","B","B","B","Y","H","R","Y"]
-private var whiteTest = ["W","O","R","O","W","R","W","W","O"]
-private var yellowTest = ["B","Y","G","W","Y","G","O","W","G"]
+//private var orageTest = ["O","W","O","O","O","R","O","O","R"]
+//private var greenTest = ["W","W","R","W","G","G","W","G","G"]
+//private var redTest = ["W","G","W","R","R","R","R","R","R"]
+//private var blueTest = ["O","W","G","B","B","B","B","B","B"]
+//private var whiteTest = ["Y","B","G","O","W","O","B","G","G"]
+//private var yellowTest = ["B","Y","Y","Y","Y","Y","Y","Y","Y"]
 
 ///side: the center piece color (i.e 1 if orange side)
 ///color: The color of the piece being mapped (i.e R if red piece)
@@ -231,19 +245,22 @@ struct ModdeledTestCube: View {
     }
 }
 
+//CubeSide(side: getCubeSideArray(side: 5),width: width, height: height)
+//CubeSide(side: getCubeSideArray(side: 1),width: width, height: height + 90)
+//CubeSide(side: getCubeSideArray(side: 2),width: width + 90, height: height + 90)
+//CubeSide(side: getCubeSideArray(side: 3),width: width - 90, height: height + 90)
+//CubeSide(side: getCubeSideArray(side: 4),width: width + 180, height: height + 90)
+//CubeSide(side: getCubeSideArray(side: 6),width: width, height: height + 180)
+
 struct ModdeledCube: View {
     
     var width: CGFloat
     var height: CGFloat
-    
+    //TODO: Ensure that it is working
     var body: some View {
-        ZStack{
-            CubeSide(side: getCubeSideArray(side: 5),width: width, height: height)
-            CubeSide(side: getCubeSideArray(side: 1),width: width, height: height + 90)
-            CubeSide(side: getCubeSideArray(side: 2),width: width + 90, height: height + 90)
-            CubeSide(side: getCubeSideArray(side: 3),width: width - 90, height: height + 90)
-            CubeSide(side: getCubeSideArray(side: 4),width: width + 180, height: height + 90)
-            CubeSide(side: getCubeSideArray(side: 6),width: width, height: height + 180)
+        VStack{
+            SideSelector(width: width, height: height)
+            Spacer()
         }
     }
 }

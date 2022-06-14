@@ -117,7 +117,7 @@ struct SolvingView: View {
                 .environmentObject(GridVitals())
         } else {
             VStack {
-//                    ModdeledCube(width: UIScreen.main.bounds.width/2.6, height: UIScreen.main.bounds.height/7)
+//                    ModdeledCube(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                     ModdeledTestCube()
                 Button {
                     showFinalCube = false

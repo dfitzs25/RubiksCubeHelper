@@ -11,9 +11,10 @@ import SwiftUI
 struct RCHApp: App {
     var body: some Scene {
         WindowGroup {
-            SolvingView()
-                .environmentObject(PhotoCaptureView())
-                .environmentObject(GridVitals())
+//            SolvingView()
+//                .environmentObject(PhotoCaptureView())
+//                .environmentObject(GridVitals())
+            ModelCubeForSolving()
         }
     }
 }
